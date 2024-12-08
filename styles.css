@@ -1,0 +1,342 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(135deg, #fff, #f3d9a3); /* Gradiente dourado e branco */
+    overflow-x: hidden;
+}
+
+/* Estilos do cabeçalho */
+header {
+    background: linear-gradient(135deg, #d4af37, #f1e4c1); /* Dourado mais suave e branco suave */
+    color: #fff;
+    padding: 1.2rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15); /* Sombra mais suave */
+    animation: fadeIn 1s ease-out; /* Animação de entrada do cabeçalho */
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+header .logo h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    transition: transform 0.3s ease;
+    animation: slideIn 1.2s ease-out; /* Animação do logo */
+}
+
+header .logo h1:hover {
+    transform: scale(1.1);
+}
+
+/* Menu */
+nav {
+    position: relative;
+}
+
+nav .menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    z-index: 2000;
+}
+
+nav .menu-toggle .bar {
+    width: 30px;
+    height: 4px;
+    background: #fff;
+    border-radius: 5px;
+    transition: transform 0.3s, background 0.3s;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    opacity: 0;
+    transform: translateY(-50px);
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+}
+
+nav ul.open {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.8rem 1.2rem;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    position: relative;
+    transition: background-color 0.3s, transform 0.3s, color 0.3s;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background-color: #fff;
+    transition: width 0.3s ease;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+nav ul li a:hover {
+    background-color: #2a5298;
+    transform: translateY(-3px);
+    color: #f4f4f9;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+nav .menu-toggle.open .bar:nth-child(1) {
+    transform: rotate(45deg);
+    position: relative;
+    top: 5px;
+}
+
+nav .menu-toggle.open .bar:nth-child(2) {
+    opacity: 0;
+}
+
+nav .menu-toggle.open .bar:nth-child(3) {
+    transform: rotate(-45deg);
+    position: relative;
+    top: -5px;
+}
+
+/* Animação do menu hambúrguer */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Estilos das seções */
+.section {
+    padding: 3rem 1.5rem;
+    text-align: center;
+    animation: fadeInUp 1s ease-out;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+p {
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+/* Animação de fade-in com efeito de "subida" */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Estilo da galeria de projetos */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    justify-content: center;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    border-bottom: 2px solid #f1f1f1;
+}
+
+.card h3 {
+    margin: 1.2rem 0 0.5rem;
+    font-size: 1.4rem;
+    color: #333;
+}
+
+.card p {
+    font-size: 1rem;
+    color: #777;
+    margin-bottom: 1.2rem;
+}
+
+/* Estilos para os links dentro das cards */
+.card-link {
+    display: block;
+    text-decoration: none; /* Remove o sublinhado do link */
+    color: inherit; /* Garante que a cor do texto seja a mesma */
+}
+
+/* Quando o link é clicado, o efeito de hover também vai funcionar */
+.card-link:hover .card {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Link de email */
+.email-link {
+    font-size: 1.1rem;
+    color: #2a5298;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.email-link:hover {
+    color: #d4af37;
+}
+
+/* Estilos para o rodapé */
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1.2rem 0;
+    margin-top: 2rem;
+}
+
+/* Botão de voltar ao topo */
+.scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #d4af37;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1.2rem;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.scroll-to-top:hover {
+    transform: scale(1.1);
+}
+
+/* Menu responsivo */
+@media (max-width: 768px) {
+    nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 80px;
+        right: 20px;
+        background: #d4af37;
+        width: 240px;
+        padding: 10px;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+    }
+
+    nav ul.open {
+        display: flex;
+    }
+
+    nav .menu-toggle {
+        display: flex;
+    }
+
+    /* Ajustes no layout das seções */
+    .section {
+        padding: 2rem 1.5rem;
+    }
+}
+
+/* Animações para os elementos das seções */
+@keyframes fadeInSection {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInCard {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
